@@ -1,5 +1,5 @@
 
-![Alt text](IMAGENES/g3313.png?raw=true "gestion de autoescuela")
+![Alt text](../IMAGENES/g3313.png?raw=true "gestion de autoescuela")
 
 proyecto  para la gestiond de una autoescuela.
 
