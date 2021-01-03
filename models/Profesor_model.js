@@ -6,6 +6,7 @@ var profeSchema = mongoose.Schema({
     nombre: String,
     primer_apellido: String,
     segundo_apellido: String,
+    pass: String,
     permisos:[]       
 });
 
