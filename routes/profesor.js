@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Prof_model = require('../models/Profesor_model.js');
+const bcrypt = require("bcryptjs");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -22,7 +23,8 @@ router.get('/:id', function(req, res, next) {
 
 /* post alumno. */
 router.post('/', function(req, res, next) {
- Prof_model.create(req.body, function(err,profesorInfo){
+    req.body.pass= bcrypt.hashSync(req.body.pass,10)
+   Prof_model.create(req.body, function(err,profesorInfo){
    if(err) res.status(500).send(err);
    else res.sendStatus(200);
  });
