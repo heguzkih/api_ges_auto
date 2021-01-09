@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Prof_model = require('../models/Profesor_model.js');
 const bcrypt = require("bcryptjs");
+const jwt =  require('jwt-simple');
+const moment = require('moment');
 
 /* GET profesor listing. */
 router.get('/', function(req, res, next) {
@@ -23,14 +25,14 @@ router.get('/:id', function(req, res, next) {
 
 /* post profesor. */
 router.post('/', function(req, res, next) {
-    req.body.pass= bcrypt.hashSync(req.body.pass,10)
+   req.body.pass= bcrypt.hashSync(req.body.pass,10)
    Prof_model.create(req.body, function(err,profesorInfo){
    if(err) res.status(500).send(err);
    else res.sendStatus(200);
  });
 });
 
-/* put profesor por id. */
+/* put profesor por dni. */
 router.put('/:dni', function(req, res,next){
   Prof_model.findOneAndUpdate({dni:req.params.dni},req.body,function(err,profesorInfo){
     if(err)res.status(500).send(err);
@@ -49,25 +51,25 @@ router.delete('/:id', function(req, res, next) {
 /* loguin por profesor*/
 
 router.post('/loguin', async(req,res)=>{
+  
   const profesor = await Prof_model.findOne({dni: req.body.dni});
+
+  
   
   if(profesor){
+
+    let passA = req.body.pass;
+    let passB = profesor.pass;
     
-    const iguales = bcrypt.compareSync(req.body.pass, profesor.pass);
-     
-    if(iguales){
-      
-      res.json({error: 'ok log'});
-
-    }else{
-
-      res.json({error: 'error 1'});
+    if (passA==passB){
+    res.sendStatus(200);
+    }
+    else {
+      res.status(501);
     }
 
   }else{
-    res.json({error: ver});
-    
-    
+      res.status(500).send('mal');
     
   }
  

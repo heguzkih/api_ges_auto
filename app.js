@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+const middlewares = require('./routes/middlewares');
 var indexRouter = require('./routes/index');
 var alumnoRouter = require('./routes/alumno');
 var profesorRoute = require('./routes/profesor');
 var practicaRoute = require('./routes/practica');
+var loguinRoute = require('./routes/loguin');
 
 //modificacion eduardo para conexion con monngoose y variavle de entyrono en .env
 require('dotenv').config();
@@ -32,9 +34,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/alumno', alumnoRouter);
-app.use('/profesor', profesorRoute);
-app.use('/practica', practicaRoute);
+app.use('/alumno', middlewares.checkLoguin, alumnoRouter);
+app.use('/profesor',middlewares.checkLoguin, profesorRoute);
+app.use('/practica',middlewares.checkLoguin, practicaRoute);
+app.use('/loguin',loguinRoute);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
