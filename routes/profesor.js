@@ -48,33 +48,6 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-/* loguin por profesor*/
-
-router.post('/loguin', async(req,res)=>{
-  
-  const profesor = await Prof_model.findOne({dni: req.body.dni});
-
-  
-  
-  if(profesor){
-
-    let passA = req.body.pass;
-    let passB = profesor.pass;
-    
-    if (passA==passB){
-    res.sendStatus(200);
-    }
-    else {
-      res.status(501);
-    }
-
-  }else{
-      res.status(500).send('mal');
-    
-  }
- 
- 
-});
 
 
 module.exports = router;
