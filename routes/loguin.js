@@ -14,7 +14,7 @@ router.post('/', async(req,res)=>{
   if(profesor){
     const iguales = bcrypt.compareSync(req.body.pass,profesor.pass);
     if(iguales){
-      res.status(200).json({error: createToken(profesor)});
+      res.status(200).json({succes: createToken(profesor)});
     }else{
     res.status(500).json({error: 'Contraseña incorrecta'});
     }
