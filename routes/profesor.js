@@ -16,8 +16,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET profesor for id. */
-router.get('/:id', function(req, res, next) {
-  Prof_model.findById(req.params.id,function(err,profesorInfo){
+router.get('/:dni', function(req, res, next) {
+  Prof_model.findOne({dni:req.params.dni},function(err,profesorInfo){
     if(err) res.status(500).send(err);
     else res.status(200).json(profesorInfo);
   });
@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
 
 /* put profesor por dni. */
 router.put('/:dni', function(req, res,next){
-  Prof_model.findOneAndUpdate({dni:req.params.dni},function(err,profesorInfo){
+  Prof_model.findOneAndUpdate({dni:req.params.dni},req.body,function(err,profesorInfo){
     if(err)res.status(500).send(err);
     else res.sendStatus(200);
   });
