@@ -2,11 +2,12 @@ const jwt = require('jwt-simple');
 
 
 const checkLoguin = (req,res,next ) =>{
-        if (!req.headers['profesorLoguin']) {
-            return res.status(500).json({error: 'Falta el profesor-loguin'});
+        
+    if (!req.headers['profesor-login']) {
+            return res.status(500).json({error: 'Falta el profLogin'});
         }else{
 
-            const profesorToken = req.headers['profesorLoguin'];
+            const profesorToken = req.headers['profesor-login'];
             let payload={};
 
             try {
