@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/alumno', middlewares.checkLoguin, alumnoRouter);
-app.use('/profesor',middlewares.checkLoguin, profesorRoute);
+app.use('/profesor',profesorRoute);
 app.use('/practica',middlewares.checkLoguin, practicaRoute);
 app.use('/loguin',loguinRoute);
 // catch 404 and forward to error handler
