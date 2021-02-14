@@ -32,6 +32,7 @@ router.post('/', function(req, res, next) {
  });
 });
 
+
 /* put profesor por dni. */
 router.put('/:dni', function(req, res,next){
   Prof_model.findOneAndUpdate({dni:req.params.dni},req.body,function(err,profesorInfo){
