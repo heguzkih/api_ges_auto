@@ -7,6 +7,7 @@ var profeSchema = mongoose.Schema({
     primer_apellido: String,
     segundo_apellido: String,
     pass: String,
+    root:{type:Boolean, default:false},
     permisos:[]       
 });
 
