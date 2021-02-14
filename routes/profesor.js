@@ -42,7 +42,7 @@ router.put('/:dni', function(req, res,next){
 
 /* delete profesor por id */
 router.delete('/:dni', function(req, res, next) {
-  Prof_model.findOneandDelte({dni:req.params.dni},function(err,profesorInfo){
+  Prof_model.findOneAndDelte({dni:req.params.dni},function(err,profesorInfo){
     if(err) res.status(500).send(err);
     else res.sendStatus(200);
   });
