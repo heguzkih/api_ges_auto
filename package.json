@@ -18,6 +18,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.15",
     "mongoose-autopopulate": "^0.12.3",
+    "mongoose-unique-validator": "^2.0.3",
     "morgan": "~1.9.1",
     "unicode-7.0.0": "^0.7.5"
   }

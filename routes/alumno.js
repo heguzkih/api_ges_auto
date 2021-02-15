@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Alum_model = require('../models/Alum_model.js');
 
-/* GET users listing. */
+/* GET alumnos listing. */
 router.get('/', function(req, res, next) {
   Alum_model.find().sort('nombre').exec(function(err,alumnoinfo){
       if(err)res.status(500).send(err);
