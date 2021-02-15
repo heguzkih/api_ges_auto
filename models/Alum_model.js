@@ -16,22 +16,9 @@ var alumSchema = mongoose.Schema({
     condiciones_restrictivas:{type:Boolean, default:false},
     validez_limitada:{type:Boolean, default:false},
     permiso_que_solicita:String,
-    direccion:{
-        tipo_calle:String,
-        nombre_via:String,
-        numero:String,
-        portal:String,
-        bloque:String,
-        escalera:String,
-        planta:String,
-        puerta:String,
-        km:String,
-        hm:String,
-        cp:Number,
-        provincia:String,
-        municipio:String,
-        poblacion:String
-    }  
+    direccion: String
+        
+
 });
 alumSchema.plugin(uniqueValidator);
 module.exports= mongoose.model('alumnos',alumSchema);
