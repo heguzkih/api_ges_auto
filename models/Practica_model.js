@@ -7,6 +7,7 @@ var PracticaSchema = mongoose.Schema({
     alumno:{type: mongoose.Schema.Types.ObjectId, ref:'alumnos', autopopulate: true},
     fechaFin:{type: Date, default:Date.now},
     fechaInicio:{type: Date, default:Date.now },
+    comentario:String,
     permiso:String,
 });
 PracticaSchema.plugin(require('mongoose-autopopulate'));
