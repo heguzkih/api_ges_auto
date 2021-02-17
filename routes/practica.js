@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Practica_model = require('../models/Practica_model.js'); 
 
-/* GET users listing. */
+/* GET practica listing. */
 router.get('/', function(req, res, next) {
   Practica_model.find().sort('fecha').exec(function(err,practicainfo){
       if(err)res.status(500).send(err);
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET users for id. */
+/* GET practica for id. */
 router.get('/:id', function(req, res, next) {
   Practica_model.findById(req.params.id,function(err,practicainfo){
     if(err) res.status(500).send(err);
@@ -20,7 +20,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* post alumno. */
+/* post practica. */
 router.post('/', function(req, res, next) {
  Practica_model.create(req.body, function(err,practicainfo){
    if(err) res.status(500).send(err);
@@ -28,15 +28,15 @@ router.post('/', function(req, res, next) {
  });
 });
 
-/* put alumno por id. */
-router.put('/:dni', function(req, res,next){
-  Practica_model.findOneAndUpdate({dni:req.params.dni},req.body,function(err,practicainfo){
+/* put practica por id. */
+router.put('/:id', function(req, res,next){
+  Practica_model.findByIdAndUpdate(req.params.id,req.body,function(err,practicainfo){
     if(err)res.status(500).send(err);
     else res.sendStatus(200);
   });
 });
 
-/* delete alumno por dni */
+/* delete practica por dni */
 router.delete('/:id', function(req, res, next) {
   Practica_model.findByIdAndDelete(req.params.id,function(err,practicainfo){
     if(err) res.status(500).send(err);
