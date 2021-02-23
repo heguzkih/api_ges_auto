@@ -12,7 +12,7 @@ var profesorRoute = require('./routes/profesor');
 var practicaRoute = require('./routes/practica');
 var loguinRoute = require('./routes/loguin');
 
-//modificacion eduardo para conexion con monngoose y variavle de entyrono en .env
+//modificacion eduardo para conexion con monngoose y variavle de entorno en .env
 require('dotenv').config();
 
 var mongoose = require('mongoose');
