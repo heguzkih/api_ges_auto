@@ -1,4 +1,6 @@
 const jwt = require('jwt-simple');
+/*chequea que en la cabecera se mande el token para seguridad 
+ */
 
 
 const checkLoguin = (req,res,next ) =>{

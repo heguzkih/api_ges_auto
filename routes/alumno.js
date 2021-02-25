@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Alum_model = require('../models/Alum_model.js');
 
-/* GET alumnos listing. */
+/* GET alumnos listar . */
 router.get('/', function(req, res, next) {
   Alum_model.find().sort('nombre').exec(function(err,alumnoinfo){
       if(err)res.status(500).send(err);
@@ -28,7 +28,7 @@ router.post('/', function(req, res, next) {
  });
 });
 
-/* put alumno por id. */
+/* put alumno por dni. */
 router.put('/:dni', function(req, res,next){
   Alum_model.findOneAndUpdate({dni:req.params.dni},req.body,function(err,alumnoinfo){
     if(err)res.status(500).send(err);
@@ -36,7 +36,7 @@ router.put('/:dni', function(req, res,next){
   });
 });
 
-/* delete alumno por dni */
+/* delete alumno por id */
 router.delete('/:id', function(req, res, next) {
   Alum_model.findByIdAndDelete(req.params.id,function(err,alumnoinfo){
     if(err) res.status(500).send(err);

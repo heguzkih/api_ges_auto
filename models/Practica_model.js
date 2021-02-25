@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-// esquema para alumnos
+// esquema para practicas
 var PracticaSchema = mongoose.Schema({
     //id: { type: ObjectId, required: true },
     profesor:{type: mongoose.Schema.Types.ObjectId, ref:'profesor',autopopulate:true},

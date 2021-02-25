@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+/*redireciona a las distintas rutas*/
 app.use('/', indexRouter);
 app.use('/alumno',middlewares.checkLoguin, alumnoRouter);
 app.use('/profesor',middlewares.checkLoguin,profesorRoute);

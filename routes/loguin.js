@@ -23,7 +23,8 @@ router.post('/', async(req,res)=>{
   }
 
 });
-
+/*crea token para la utentificación
+ */
 const createToken = (profesor) =>{
 
   const payload = {
